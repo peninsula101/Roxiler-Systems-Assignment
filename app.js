@@ -8,6 +8,7 @@ const sqlite3 = require('sqlite3');
 const { request } = require('http');
 
 const app = express();
+const port = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 
@@ -21,7 +22,7 @@ const initializeServer = async () => {
             filename: dbPath,
             driver: sqlite3.Database,
         });
-        app.listen(3000, () => {
+        app.listen(port, () => {
             console.log('Server Running at http://localhost:3000/');
         });
     } catch (e) {
